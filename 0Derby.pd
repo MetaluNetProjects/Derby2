@@ -284,9 +284,9 @@
 #X connect 11 0 4 0;
 #X restore 572 279 pd chrono;
 #X obj 572 312 nbx 5 30 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 30
--262144 -1 -1 38.7 256;
+-262144 -1 -1 0 256;
 #X obj 11 198 fruit/fruit 1 controls 11 fwControls;
-#N canvas 155 141 790 529 classement 0;
+#N canvas 155 141 790 529 classement 1;
 #X obj 205 28 r STATE;
 #X obj 205 49 sel PausePreCourse Parade;
 #X obj 412 34 table classement 10;
@@ -353,10 +353,12 @@
 #X obj 256 199 tabread gagnants;
 #X obj 256 220 sel 0;
 #X obj 256 241 f;
-#X msg 461 327 \$1 0;
 #X obj 461 279 route 0 1 2 3 4 5 6;
 #X obj 641 279 * 0.5;
 #X obj 683 279 * 0.6;
+#X msg 461 327 \$1 -1000;
+#X msg 420 308 -1;
+#X msg 482 440 -1 200;
 #X connect 0 0 1 0;
 #X connect 1 0 7 0;
 #X connect 1 0 6 0;
@@ -391,7 +393,7 @@
 #X connect 35 0 48 0;
 #X connect 36 0 41 0;
 #X connect 36 1 37 1;
-#X connect 37 0 61 0;
+#X connect 37 0 60 0;
 #X connect 41 0 37 0;
 #X connect 44 0 46 0;
 #X connect 45 0 36 0;
@@ -401,24 +403,26 @@
 #X connect 50 0 43 0;
 #X connect 51 0 43 0;
 #X connect 52 0 53 0;
+#X connect 52 0 61 0;
 #X connect 52 0 62 0;
-#X connect 52 0 63 0;
 #X connect 53 0 51 1;
 #X connect 56 0 57 0;
 #X connect 56 1 59 1;
 #X connect 57 0 58 0;
 #X connect 58 0 59 0;
 #X connect 59 0 17 0;
-#X connect 60 0 43 0;
-#X connect 61 0 60 0;
-#X connect 61 1 49 0;
-#X connect 61 2 50 0;
-#X connect 61 3 51 0;
-#X connect 61 4 60 0;
-#X connect 61 5 60 0;
-#X connect 61 6 60 0;
-#X connect 62 0 49 1;
-#X connect 63 0 50 1;
+#X connect 60 0 63 0;
+#X connect 60 1 49 0;
+#X connect 60 2 50 0;
+#X connect 60 3 51 0;
+#X connect 60 4 63 0;
+#X connect 60 5 63 0;
+#X connect 60 6 63 0;
+#X connect 61 0 49 1;
+#X connect 62 0 50 1;
+#X connect 63 0 43 0;
+#X connect 64 0 63 0;
+#X connect 65 0 43 0;
 #X coords 0 -1 1 1 85 160 1 20 50;
 #X restore 738 283 pd classement;
 #N canvas 627 151 663 585 SCENARIO 0;
@@ -1184,7 +1188,7 @@
 #X obj 23 215 *~;
 #X obj 182 211 *~;
 #X obj 233 90 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3115 1;
+-1 -1 0 1;
 #X obj 230 111 pow 2;
 #X msg 230 132 \$1 20;
 #X obj 230 153 line~;
@@ -1225,7 +1229,7 @@
 #X msg 191 72 \$1 20;
 #X obj 191 93 line~;
 #X obj 194 31 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -262144
--1 -1 9534 1;
+-1 -1 12497 1;
 #X obj 127 132 *~;
 #X obj 191 7 r FX_POT;
 #X obj 329 227 fuzz~ 0.03;
@@ -1401,9 +1405,9 @@
 #X restore 14 363 pd dépassements;
 #N canvas 39 86 1088 604 lumieresPistes 0;
 #X obj 17 35 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5588 1;
+-1 -1 0 1;
 #X obj 163 35 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5588 1;
+-1 -1 0 1;
 #X obj 14 56 clip 0 1;
 #X obj 14 77 change;
 #X obj 160 56 clip 0 1;
@@ -1485,9 +1489,9 @@
 #X msg 313 375 11 \$1;
 #X msg 459 375 10 \$1;
 #X obj 609 313 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 12192 1;
 #X obj 755 313 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 12192 1;
 #X obj 606 334 clip 0 1;
 #X obj 606 355 change;
 #X obj 752 334 clip 0 1;
@@ -1650,30 +1654,30 @@
 #X obj 245 337 s SONNETTE_FIN;
 #X obj 245 57 r CHEVAL_ARRIVE;
 #X obj 245 104 sel 1 2 3 4 5 6;
-#X obj 278 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 278 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 76 124 t b b;
 #X obj 103 174 s autorisationArrive;
 #X obj 404 97 r autorisationArrive;
 #X obj 245 190 spigot;
 #X msg 278 141 0, f 1;
-#X obj 327 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 327 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 294 190 spigot;
 #X msg 327 141 0, f 1;
-#X obj 377 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 377 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 344 190 spigot;
 #X msg 377 141 0, f 1;
-#X obj 533 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 533 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 500 191 spigot;
 #X msg 533 142 0, f 1;
-#X obj 428 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 428 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 395 190 spigot;
 #X msg 428 141 0, f 1;
-#X obj 479 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 479 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 446 191 spigot;
 #X msg 479 142 0, f 1;
@@ -1751,7 +1755,7 @@
 #X obj 356 396 s CHEVAL_LAMPE_ARRIVEE;
 #X obj 339 428 s CHEVAL_LAMPE_DEPART;
 #X obj 234 328 list prepend 1;
-#X obj 21 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 21 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 234 307 line, f 15;
 #X obj 53 31 sel PausePreCourse;
@@ -2168,11 +2172,11 @@
 #X msg 45 444 244;
 #N canvas 1 82 1095 196 colors 0;
 #X obj 56 46 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -1984
--1 -1 12700 1;
+-1 -1 11300 1;
 #X obj 56 63 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -258113
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 56 81 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
--1 -1 0 1;
+-1 -1 12700 1;
 #N canvas 1 82 348 194 pack 0;
 #X obj 43 28 inlet;
 #X obj 114 27 inlet;
@@ -2219,9 +2223,9 @@
 #X obj 398 50 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -1984
 -1 -1 0 1;
 #X obj 398 67 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -258113
--1 -1 0 1;
-#X obj 398 85 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
 -1 -1 12700 1;
+#X obj 398 85 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
+-1 -1 10200 1;
 #N canvas 1 82 348 194 pack 0;
 #X obj 43 28 inlet;
 #X obj 114 27 inlet;
@@ -2241,11 +2245,11 @@
 #X restore 357 104 pd pack;
 #X obj 357 148 s COLOR_VELOS;
 #X obj 580 49 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -1984
--1 -1 9200 1;
+-1 -1 12700 1;
 #X obj 580 66 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -258113
--1 -1 9900 1;
-#X obj 580 84 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
 -1 -1 0 1;
+#X obj 580 84 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
+-1 -1 9900 1;
 #N canvas 1 82 348 194 pack 0;
 #X obj 43 28 inlet;
 #X obj 114 27 inlet;
@@ -2265,11 +2269,11 @@
 #X restore 539 103 pd pack;
 #X obj 539 147 s COLOR_VELOS;
 #X obj 756 50 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -1984
--1 -1 12700 1;
+-1 -1 7400 1;
 #X obj 756 67 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -258113
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 756 85 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
--1 -1 12400 1;
+-1 -1 6900 1;
 #N canvas 1 82 348 194 pack 0;
 #X obj 43 28 inlet;
 #X obj 114 27 inlet;
@@ -2289,11 +2293,11 @@
 #X restore 715 104 pd pack;
 #X obj 715 148 s COLOR_VELOS;
 #X obj 922 53 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -1984
--1 -1 0 1;
+-1 -1 2300 1;
 #X obj 922 70 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -258113
--1 -1 12700 1;
+-1 -1 7100 1;
 #X obj 922 88 hsl 128 15 0 1 0 1 empty empty empty -2 -8 0 10 -4034
--1 -1 9400 1;
+-1 -1 12700 1;
 #N canvas 1 82 348 194 pack 0;
 #X obj 43 28 inlet;
 #X obj 114 27 inlet;
