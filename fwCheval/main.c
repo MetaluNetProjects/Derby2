@@ -128,6 +128,13 @@ void testTransEnds()
 		DCMOTOR(A).Setting.Mode = 0;
 	}
 
+	/*if((DCMOTOR(A).Setting.Mode != 0) && 
+		((digitalRead(TRANS_HISW) == TRANS_SWLEVEL) || (digitalRead(TRANS_LOSW) == TRANS_SWLEVEL))
+	) {
+		DCMOTOR(A).Vars.PWMConsign = 0;
+		DCMOTOR(A).Setting.Mode = 0;
+	}*/
+
 #if 0
 	if((state == STATE_RUNNING) 
 	&& (digitalRead(TRANS_HISW) == TRANS_SWLEVEL)
@@ -176,6 +183,17 @@ void sendMotorState()
 	fraiseSend(buf,len);
 }
 
+#define DCMOTOR_UPDATE_ASYM_PROTECT_(motID) do{ \
+	DCMOTOR_FORMATPWM(motID);\
+	if((dcmotor_v < 0) && (digitalRead(TRANS_LOSW) == TRANS_SWLEVEL)) dcmotor_v = 0; \
+	if((dcmotor_v > 0) && (digitalRead(TRANS_HISW) == TRANS_SWLEVEL)) dcmotor_v = 0; \
+	dcmotor_vabs = dcmotor_v < 0 ? 1023 + dcmotor_v : dcmotor_v; \
+	SET_PWM(MOT##motID##_PWM, dcmotor_vabs); \
+	if(dcmotor_v < 0) { digitalSet(M##motID##2);}\
+	else { digitalClear(M##motID##2);}\
+ } while(0)
+#define DCMOTOR_UPDATE_ASYM_PROTECT(motID) CALL_FUN(DCMOTOR_UPDATE_ASYM_PROTECT_,motID)
+
 void loop() {
 	static unsigned char loopCount;
 // ---------- Main loop ------------
@@ -190,7 +208,7 @@ void loop() {
 		fraiseService();
 #ifdef USE_MOTORS
 		testTransEnds();
-		DCMOTOR_COMPUTE_SINGLE(A,ASYM);
+		DCMOTOR_COMPUTE_SINGLE(A,ASYM_PROTECT);
 		
 		if(loopCount++ > 10) {
 			sendMotorState();
