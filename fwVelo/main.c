@@ -89,7 +89,7 @@ void pulseCountsProcess()
 	INCPULSE(6);
 */
 	unsigned char i, ptmp;
-#define DEBOUNCE_MAX 100
+#define DEBOUNCE_MAX 4
 	/*for(i = 0 ; i < 6 ; i++) {
 		if(readPulsePin(i)) {
 			if(pinDebounceCount[i] < DEBOUNCE_MAX) pinDebounceCount[i]++;
