@@ -1,7 +1,7 @@
 #N canvas 535 225 961 497 10;
 #X declare -lib iemlib -path iemlib;
-#X declare -stdpath Fraise -path notebank;
-#X obj 10 36 pied/pied 0 41424;
+#X declare -path Fraise -path notebank -lib zexy;
+#X obj 9 30 pied/pied 0 41424;
 #X obj 571 49 state_view Debut;
 #X obj 571 85 state_view Rewind;
 #X obj 757 85 state_view PauseRewind;
@@ -135,7 +135,7 @@
 #X obj 25 512 * 1010;
 #X msg 25 546 c 10 i \$1;
 #X obj 25 311 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -257985
--1 -1 6343 1;
+-1 -1 0 1;
 #X msg 91 449 \$1 50;
 #X obj 91 470 line;
 #X obj 91 513 * 1010;
@@ -145,12 +145,12 @@
 #X obj 159 469 line;
 #X obj 159 512 * 1010;
 #X obj 159 311 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -257985
--1 -1 6357 1;
+-1 -1 0 1;
 #X msg 225 449 \$1 50;
 #X obj 225 470 line;
 #X obj 225 513 * 1010;
 #X obj 225 312 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -257985
--1 -1 12700 1;
+-1 -1 0 1;
 #X msg 91 547 c 11 i \$1;
 #X msg 159 546 c 12 i \$1;
 #X msg 225 547 c 13 i \$1;
@@ -1167,7 +1167,7 @@
 #X connect 107 0 108 0;
 #X connect 108 0 60 0;
 #X restore 14 344 pd AMBIANCE;
-#N canvas 741 137 587 631 MASTERaudio 0;
+#N canvas 731 127 587 631 MASTERaudio 0;
 #X obj 403 27 loadbang;
 #X obj 430 71 ggee/getdir;
 #X msg 430 93 symbol \$1/WAVS;
@@ -1347,7 +1347,6 @@
 #X connect 64 0 62 0;
 #X connect 65 0 63 0;
 #X restore 14 321 pd MASTERaudio;
-#X obj 9 6 declare -stdpath Fraise -path notebank;
 #X obj 45 423 loadbang;
 #X obj 45 465 s CHEVAL_MAXPOS;
 #X msg 45 444 274;
@@ -1913,12 +1912,12 @@
 #X msg 178 136 stop;
 #X obj 129 113 sel 1 0, f 17;
 #X obj 384 542 s LIGHT_GLOBALS;
-#X obj 238 197 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 238 197 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 508 91 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 384 203 f;
-#X obj 384 144 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 384 144 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 384 268 t b f;
 #X obj 384 310 t f f;
@@ -2046,6 +2045,7 @@
 #X obj 250 321 cheval 5 5 25;
 #X obj 250 394 cheval 6 6 26;
 #X obj 10 116 fruit/fruit 1 velos 10 fwVelos 1;
+#X obj 9 6 declare -path Fraise -path notebank -lib zexy;
 #X connect 15 0 16 0;
-#X connect 23 0 25 0;
-#X connect 25 0 24 0;
+#X connect 22 0 24 0;
+#X connect 24 0 23 0;
